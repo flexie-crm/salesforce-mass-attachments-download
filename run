@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Check and install Python if not already installed
+if ! command -v python3 &> /dev/null
+then
+    echo "Python3 is not installed, installing now..."
+    sudo apt-get update
+    sudo apt-get install python3 python3-venv python3-pip -y
+fi
+
+# Create and activate virtual environment
+python3 -m venv venv
+source venv/bin/activate
+
+# Install required packages
+pip install requests
+
+# Execute Python script
+python3 salesforce_downloader.py
